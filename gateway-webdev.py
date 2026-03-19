@@ -2,7 +2,7 @@
 FastMCP 3 Webdev Gateway
 Project-only servers not available in global gateway.
 
-Servers: figma, vercel, in-memoria, serena
+Servers: figma, vercel, in-memoria, next-devtools, serena
 """
 
 import os
@@ -51,7 +51,12 @@ mount("in-memoria", NpxStdioTransport(
     package="in-memoria",
 ))
 
-# 4. Code navigation (project-specific)
+# 4. Next.js devtools
+mount("next-devtools", NpxStdioTransport(
+    package="next-devtools-mcp@latest",
+))
+
+# 5. Code navigation (project-specific)
 mount("serena", UvxStdioTransport(
     tool_name="serena",
     from_package="git+https://github.com/oraios/serena",
